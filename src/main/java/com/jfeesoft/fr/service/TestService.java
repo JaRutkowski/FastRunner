@@ -6,4 +6,9 @@ import java.util.List;
 
 public interface TestService {
     List<Test> findAll();
+
+    Integer save(Test test);
+
+    void deleteTest(Integer id);
+
 }

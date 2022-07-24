@@ -7,15 +7,36 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 public class TestControllerImpl implements TestController {
     private final TestServiceImpl testServiceImpl;
 
     @Override
-    public ResponseEntity<List<Test>> findAll() {
+    public ResponseEntity findAll() {
         return ResponseEntity.ok(testServiceImpl.findAll());
     }
+
+    @Override
+    public ResponseEntity findAllById(Integer id) {
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity findAllByName(String name) {
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity save(Test test) {
+        return ResponseEntity.ok(testServiceImpl.save(test));
+    }
+
+    @Override
+    public ResponseEntity delete(Integer id) {
+        testServiceImpl.deleteTest(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
