@@ -2,6 +2,7 @@ package com.jfeesoft.fr.controller.api;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,9 @@ public interface GpxController {
     @PostMapping("/upload")
     ResponseEntity upload(@RequestParam("file") MultipartFile file);
 
-    @PostMapping()
+    @PostMapping
     ResponseEntity parse(@RequestParam("file") String file) throws IOException;
+
+    @GetMapping("/distance")
+    ResponseEntity calculateDistance(@RequestParam("file") String file) throws IOException;
 }

@@ -25,4 +25,9 @@ public class GpxControllerImpl implements GpxController {
         gpxService.parseGpx(file);
         return ResponseEntity.ok().build();
     }
+
+    @Override
+    public ResponseEntity calculateDistance(String file) throws IOException {
+        return ResponseEntity.ok(gpxService.calculateDistance(file));
+    }
 }
