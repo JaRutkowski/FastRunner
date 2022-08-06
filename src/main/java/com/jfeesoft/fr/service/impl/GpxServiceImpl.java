@@ -5,6 +5,7 @@ import com.jfeesoft.fr.service.StatisticsService;
 import io.jenetics.jpx.GPX;
 import io.jenetics.jpx.Track;
 import io.jenetics.jpx.TrackSegment;
+import io.jenetics.jpx.WayPoint;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
@@ -40,24 +42,23 @@ public class GpxServiceImpl implements GpxService {
     public GPX parseGpx(String path) throws IOException {
         GPX gpx = GPX.read(Path.of(path));
         gpx.tracks().flatMap(Track::segments)
-                .flatMap(TrackSegment::points)
-                .forEach(System.out::println);
+                .flatMap(TrackSegment::points);
         return gpx;
     }
 
     public double calculateDistance(String path) throws IOException {
-        return statisticsService.calculateDistance(parseGpx(path).getWayPoints());
+        return statisticsService.calculateDistance(parseGpx(path).getTracks().get(0).getSegments().get(0).getPoints());
     }
 
     private void createUploadDirectory() {
-        File uploadDirectory = new File("C:\\fast-runner");
-        if (!uploadDirectory.exists()) {
+        File createNewDirectory = new File("C:\\fast-runner");
+        if (!createNewDirectory.exists()) {
             try {
-                Files.createDirectories(uploadDirectory.toPath());
+                Files.createDirectories(createNewDirectory.toPath());
             } catch (IOException e) {
                 log.severe(e.getMessage());
             }
         }
-        fastRunnerDir = uploadDirectory.toPath();
+        fastRunnerDir = createNewDirectory.toPath();
     }
 }
