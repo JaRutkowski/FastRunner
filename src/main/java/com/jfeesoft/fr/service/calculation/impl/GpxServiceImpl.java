@@ -1,6 +1,6 @@
-package com.jfeesoft.fr.service.impl;
+package com.jfeesoft.fr.service.calculation.impl;
 
-import com.jfeesoft.fr.service.StatisticsService;
+import com.jfeesoft.fr.service.statistic.StatisticsService;
 import com.jfeesoft.fr.service.calculation.GpxService;
 import io.jenetics.jpx.GPX;
 import io.jenetics.jpx.Track;
@@ -28,4 +28,5 @@ public class GpxServiceImpl implements GpxService {
     public double calculateDistance(String path) throws IOException {
         return statisticsService.calculateDistance(parseGpx(path).getTracks().get(0).getSegments().get(0).getPoints());
     }
+
 }

@@ -1,7 +1,8 @@
 package com.jfeesoft.fr.controller.api.impl;
 
 import com.jfeesoft.fr.controller.api.GpxController;
-import com.jfeesoft.fr.service.GpxService;
+import com.jfeesoft.fr.service.common.FileService;
+import com.jfeesoft.fr.service.calculation.GpxService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +14,11 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class GpxControllerImpl implements GpxController {
     private final GpxService gpxService;
+    private final FileService fileService;
 
     @Override
     public ResponseEntity upload(MultipartFile file) {
-        gpxService.upload(file);
+        fileService.upload(file);
         return ResponseEntity.ok().build();
     }
 

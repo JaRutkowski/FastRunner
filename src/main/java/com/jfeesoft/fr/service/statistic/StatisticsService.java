@@ -1,4 +1,4 @@
-package com.jfeesoft.fr.service;
+package com.jfeesoft.fr.service.statistic;
 
 import io.jenetics.jpx.WayPoint;
 

@@ -1,6 +1,6 @@
-package com.jfeesoft.fr.service.impl;
+package com.jfeesoft.fr.service.statistic.impl;
 
-import com.jfeesoft.fr.service.StatisticsService;
+import com.jfeesoft.fr.service.statistic.StatisticsService;
 import io.jenetics.jpx.WayPoint;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 @RequiredArgsConstructor
 @Service
