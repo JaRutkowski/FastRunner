@@ -5,12 +5,14 @@ import com.jfeesoft.fr.service.calculation.GpxService;
 import io.jenetics.jpx.GPX;
 import io.jenetics.jpx.Track;
 import io.jenetics.jpx.TrackSegment;
+import io.jenetics.jpx.WayPoint;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -26,7 +28,11 @@ public class GpxServiceImpl implements GpxService {
     }
 
     public double calculateDistance(String path) throws IOException {
-        return statisticsService.calculateDistance(parseGpx(path).getTracks().get(0).getSegments().get(0).getPoints());
+        return statisticsService.calculateDistance(getWayPoints(path));
+    }
+
+    public List<WayPoint> getWayPoints(String path) throws IOException {
+        return parseGpx(path).getTracks().get(0).getSegments().get(0).getPoints();
     }
 
 }
