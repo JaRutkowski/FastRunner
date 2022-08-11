@@ -15,38 +15,22 @@ import java.util.List;
 public class StatisticsServiceImpl implements StatisticsService {
     @Override
     public double calculateDistance(List<WayPoint> points) {
-        List<Double> pointsXAndYSubtractedAndSquared = new ArrayList<>();
         double distance = 0;
 
-        int countToTwo = 0;
         for (int x = 0; x < points.size()-1; x++) {
-            countToTwo++;
             double latitudeA = Double.parseDouble(points.get(x).getLatitude().toString()),
                     longitudeA = Double.parseDouble(points.get(x).getLongitude().toString()),
                     latitudeB = Double.parseDouble(points.get(x+1).getLatitude().toString()),
-                    longitudeB = Double.parseDouble(points.get(x+1).getLatitude().toString()),
-                    longitudeMinusLatitudeSquared;
+                    longitudeB = Double.parseDouble(points.get(x+1).getLongitude().toString());
 
-            System.out.println(latitudeA);
-            System.out.println(longitudeA);
-            System.out.println(latitudeB);
-            System.out.println(longitudeB);
-
-
-            //longitudeMinusLatitudeSquared = Math.pow(longitude - latitude, 2);
-            //pointsXAndYSubtractedAndSquared.add(longitudeMinusLatitudeSquared);
-           // distance = distance + calculatex(longitude, latitude);
+            double latitudeBMinusLatitudeASquared = Math.pow(latitudeB - latitudeA, 2);
+            double longitudeBMinusLongitudeASquared = Math.pow(longitudeB - longitudeA, 2);
+            distance = distance + Math.sqrt(
+                    latitudeBMinusLatitudeASquared + longitudeBMinusLongitudeASquared);
         }
 
             return distance;
 
-
     }
-
-        public double calculate(double longitude, double latitude ){
-            return Math.sqrt(
-                    longitude + latitude);
-        }
-
 
 }
