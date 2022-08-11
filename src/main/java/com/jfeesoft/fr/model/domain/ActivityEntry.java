@@ -48,4 +48,5 @@ public class ActivityEntry {
     public void prePersist() {
         updateDate = Calendar.getInstance();
     }
+
 }

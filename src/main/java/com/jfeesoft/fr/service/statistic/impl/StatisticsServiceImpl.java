@@ -16,17 +16,37 @@ public class StatisticsServiceImpl implements StatisticsService {
     @Override
     public double calculateDistance(List<WayPoint> points) {
         List<Double> pointsXAndYSubtractedAndSquared = new ArrayList<>();
-        for (WayPoint wayPoint : points) {
-            double latitude = Double.parseDouble(wayPoint.getLatitude().toString()),
-                    longitude = Double.parseDouble(wayPoint.getLongitude().toString()),
-                    longitudeMinusLatitudeSquared = Math.pow(longitude - latitude, 2);
-            pointsXAndYSubtractedAndSquared.add(longitudeMinusLatitudeSquared);
+        double distance = 0;
+
+        int countToTwo = 0;
+        for (int x = 0; x < points.size()-1; x++) {
+            countToTwo++;
+            double latitudeA = Double.parseDouble(points.get(x).getLatitude().toString()),
+                    longitudeA = Double.parseDouble(points.get(x).getLongitude().toString()),
+                    latitudeB = Double.parseDouble(points.get(x+1).getLatitude().toString()),
+                    longitudeB = Double.parseDouble(points.get(x+1).getLatitude().toString()),
+                    longitudeMinusLatitudeSquared;
+
+            System.out.println(latitudeA);
+            System.out.println(longitudeA);
+            System.out.println(latitudeB);
+            System.out.println(longitudeB);
+
+
+            //longitudeMinusLatitudeSquared = Math.pow(longitude - latitude, 2);
+            //pointsXAndYSubtractedAndSquared.add(longitudeMinusLatitudeSquared);
+           // distance = distance + calculatex(longitude, latitude);
         }
 
-        double distance = 0;
-        for (int i = 0; i < pointsXAndYSubtractedAndSquared.size() - 1; i++)
-            distance = distance + Math.sqrt(
-                    pointsXAndYSubtractedAndSquared.get(i) + pointsXAndYSubtractedAndSquared.get(i + 1));
-        return distance;
+            return distance;
+
+
     }
+
+        public double calculate(double longitude, double latitude ){
+            return Math.sqrt(
+                    longitude + latitude);
+        }
+
+
 }
