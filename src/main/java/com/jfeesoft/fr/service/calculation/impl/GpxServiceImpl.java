@@ -1,7 +1,7 @@
 package com.jfeesoft.fr.service.calculation.impl;
 
-import com.jfeesoft.fr.service.statistic.StatisticsService;
 import com.jfeesoft.fr.service.calculation.GpxService;
+import com.jfeesoft.fr.service.statistic.StatisticsService;
 import io.jenetics.jpx.GPX;
 import io.jenetics.jpx.Track;
 import io.jenetics.jpx.TrackSegment;
