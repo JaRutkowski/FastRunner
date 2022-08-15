@@ -1,8 +1,8 @@
 package com.jfeesoft.fr.controller.api.impl;
 
 import com.jfeesoft.fr.controller.api.GpxController;
-import com.jfeesoft.fr.service.common.FileService;
 import com.jfeesoft.fr.service.calculation.GpxService;
+import com.jfeesoft.fr.service.common.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
